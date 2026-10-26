@@ -358,11 +358,11 @@
 
         <div id="ba-slider" class="ba-slider-container h-[350px] sm:h-[480px] rounded-2xl overflow-hidden shadow-inner cursor-ew-resize">
           <!-- After Image -->
-          <img src="imagens/banheiros-cozinhas/banheiro-reformado.jpg" alt="Depois - Banheiro Reformado Fersil" class="ba-after-img">
+          <img src="imagens/banheiros-cozinhas/banheiro-depois.jpeg" alt="Depois - Banheiro Reformado Fersil" class="ba-after-img">
           
           <!-- Before Image Container -->
           <div id="ba-before" class="ba-before-img">
-            <img src="imagens/banheiros-cozinhas/obra-antes.jpg" alt="Antes - Obra em Andamento">
+            <img src="imagens/banheiros-cozinhas/banheiro-antes.jpeg" alt="Antes - Obra em Andamento">
           </div>
 
           <!-- Slider Handle -->
@@ -395,19 +395,71 @@
         <!-- Gallery Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           
-          <!-- Item 1 -->
-          <div class="gallery-item banheiros bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-brand-accent transition-all group cursor-pointer" onclick="openLightbox('imagens/banheiros-cozinhas/banheiro-reformado.jpg', 'Reforma Completa de Banheiro em Porcelanato - Barra Funda')">
-            <div class="h-64 overflow-hidden relative">
-              <img src="imagens/banheiros-cozinhas/banheiro-reformado.jpg" alt="Banheiro Reformado" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-              <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <span class="bg-brand-accent text-brand-dark p-3 rounded-full text-lg shadow-lg"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
-              </div>
+          <button type="button" class="gallery-item banheiros bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-brand-accent transition-all group cursor-pointer text-left w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-400" onclick="openLightbox('imagens/banheiros-cozinhas/banheiro-antes.jpeg', 'Banheiro — antes da reforma')">
+            <div class="h-80 overflow-hidden relative bg-slate-950">
+              <img src="imagens/banheiros-cozinhas/banheiro-antes.jpeg" alt="Banheiro — antes da reforma" loading="lazy" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute bottom-3 right-3 bg-brand-accent text-brand-dark p-3 rounded-full shadow-lg" aria-hidden="true"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
             </div>
             <div class="p-4">
               <span class="text-[10px] text-brand-accent uppercase font-bold tracking-wider">Banheiros & Cozinhas</span>
-              <h4 class="text-base font-bold text-white mt-1">Porcelanato & Hidráulica - Barra Funda</h4>
+              <h4 class="text-base font-bold text-white mt-1">Banheiro — antes da reforma</h4>
             </div>
-          </div>
+          </button>
+
+          <button type="button" class="gallery-item banheiros bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-brand-accent transition-all group cursor-pointer text-left w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-400" onclick="openLightbox('imagens/banheiros-cozinhas/banheiro-depois.jpeg', 'Banheiro — depois da reforma')">
+            <div class="h-80 overflow-hidden relative bg-slate-950">
+              <img src="imagens/banheiros-cozinhas/banheiro-depois.jpeg" alt="Banheiro — depois da reforma" loading="lazy" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute bottom-3 right-3 bg-brand-accent text-brand-dark p-3 rounded-full shadow-lg" aria-hidden="true"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+            </div>
+            <div class="p-4">
+              <span class="text-[10px] text-brand-accent uppercase font-bold tracking-wider">Banheiros & Cozinhas</span>
+              <h4 class="text-base font-bold text-white mt-1">Banheiro — depois da reforma</h4>
+            </div>
+          </button>
+
+          <button type="button" class="gallery-item banheiros bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-brand-accent transition-all group cursor-pointer text-left w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-400" onclick="openLightbox('imagens/banheiros-cozinhas/banheiro-nicho-antes.jpeg', 'Nicho do banheiro — antes do acabamento')">
+            <div class="h-80 overflow-hidden relative bg-slate-950">
+              <img src="imagens/banheiros-cozinhas/banheiro-nicho-antes.jpeg" alt="Nicho do banheiro — antes do acabamento" loading="lazy" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute bottom-3 right-3 bg-brand-accent text-brand-dark p-3 rounded-full shadow-lg" aria-hidden="true"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+            </div>
+            <div class="p-4">
+              <span class="text-[10px] text-brand-accent uppercase font-bold tracking-wider">Banheiros & Cozinhas</span>
+              <h4 class="text-base font-bold text-white mt-1">Nicho do banheiro — antes do acabamento</h4>
+            </div>
+          </button>
+
+          <button type="button" class="gallery-item banheiros bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-brand-accent transition-all group cursor-pointer text-left w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-400" onclick="openLightbox('imagens/banheiros-cozinhas/revestimento-antes.jpeg', 'Revestimento — antes')">
+            <div class="h-80 overflow-hidden relative bg-slate-950">
+              <img src="imagens/banheiros-cozinhas/revestimento-antes.jpeg" alt="Revestimento — antes" loading="lazy" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute bottom-3 right-3 bg-brand-accent text-brand-dark p-3 rounded-full shadow-lg" aria-hidden="true"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+            </div>
+            <div class="p-4">
+              <span class="text-[10px] text-brand-accent uppercase font-bold tracking-wider">Banheiros & Cozinhas</span>
+              <h4 class="text-base font-bold text-white mt-1">Revestimento — antes</h4>
+            </div>
+          </button>
+
+          <button type="button" class="gallery-item banheiros bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-brand-accent transition-all group cursor-pointer text-left w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-400" onclick="openLightbox('imagens/banheiros-cozinhas/revestimento-depois.jpeg', 'Revestimento — depois')">
+            <div class="h-80 overflow-hidden relative bg-slate-950">
+              <img src="imagens/banheiros-cozinhas/revestimento-depois.jpeg" alt="Revestimento — depois" loading="lazy" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute bottom-3 right-3 bg-brand-accent text-brand-dark p-3 rounded-full shadow-lg" aria-hidden="true"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+            </div>
+            <div class="p-4">
+              <span class="text-[10px] text-brand-accent uppercase font-bold tracking-wider">Banheiros & Cozinhas</span>
+              <h4 class="text-base font-bold text-white mt-1">Revestimento — depois</h4>
+            </div>
+          </button>
+
+          <button type="button" class="gallery-item banheiros bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-brand-accent transition-all group cursor-pointer text-left w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-400" onclick="openLightbox('imagens/banheiros-cozinhas/revestimento-depois-2.jpeg', 'Revestimento — detalhe do acabamento')">
+            <div class="h-80 overflow-hidden relative bg-slate-950">
+              <img src="imagens/banheiros-cozinhas/revestimento-depois-2.jpeg" alt="Revestimento — detalhe do acabamento" loading="lazy" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute bottom-3 right-3 bg-brand-accent text-brand-dark p-3 rounded-full shadow-lg" aria-hidden="true"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+            </div>
+            <div class="p-4">
+              <span class="text-[10px] text-brand-accent uppercase font-bold tracking-wider">Banheiros & Cozinhas</span>
+              <h4 class="text-base font-bold text-white mt-1">Revestimento — detalhe do acabamento</h4>
+            </div>
+          </button>
 
           <!-- Item 2 -->
           <div class="gallery-item drywall bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-brand-accent transition-all group cursor-pointer" onclick="openLightbox('imagens/drywall-teto/sanca-drywall.jpg', 'Forro de Drywall com Sanca Iluminada - Perdizes')">
