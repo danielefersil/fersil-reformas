@@ -632,49 +632,10 @@
   <!-- ================= FAQ SECTION ================= -->
   <section id="faq" class="py-20 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-2xl mx-auto mb-14">
-        <span class="text-xs text-brand-accent font-bold tracking-widest uppercase">Tire Suas Dúvidas</span>
-        <h2 class="text-3xl font-extrabold text-slate-900 mt-1">Perguntas Frequentes</h2>
+      <div class="text-center max-w-2xl mx-auto">
+        <span class="text-xs text-brand-accent font-bold tracking-widest uppercase">formas de pagamento aceitas</span>
+        <h2 class="text-3xl font-extrabold text-slate-900 mt-1">Oferecemos facilidade de pagamento com parcelamento via Pix, transferência bancária ou cartão de crédito, divididos por etapas concluídas da obra.</h2>
       </div>
-
-      <div class="space-y-4">
-        
-        <!-- FAQ Item 1 -->
-        <div class="border border-slate-200 rounded-2xl overflow-hidden">
-          <button onclick="toggleFaq(1)" class="w-full flex justify-between items-center p-5 text-left font-bold text-slate-900 hover:bg-brand-light transition-colors">
-            <span>Vocês atendem às regras de condomínio na Barra Funda e região?</span>
-            <i id="faq-icon-1" class="fa-solid fa-chevron-down text-brand-accent transition-transform"></i>
-          </button>
-          <div id="faq-ans-1" class="hidden p-5 pt-0 text-sm text-slate-600 border-t border-slate-100 bg-brand-light/50">
-            Sim! Respeitamos rigorosamente as normas de condomínio, horários de barulho permitidos, proteção de elevadores e corredores de acesso com plástico e papelão ondulado.
-          </div>
-        </div>
-
-        <!-- FAQ Item 2 -->
-        <div class="border border-slate-200 rounded-2xl overflow-hidden">
-          <button onclick="toggleFaq(2)" class="w-full flex justify-between items-center p-5 text-left font-bold text-slate-900 hover:bg-brand-light transition-colors">
-            <span>A visita técnica para orçamento na Barra Funda é gratuita?</span>
-            <i id="faq-icon-2" class="fa-solid fa-chevron-down text-brand-accent transition-transform"></i>
-          </button>
-          <div id="faq-ans-2" class="hidden p-5 pt-0 text-sm text-slate-600 border-t border-slate-100 bg-brand-light/50">
-            Sim, realizamos visitas técnicas sem custo na Barra Funda, Perdizes, Santa Cecília, Higienópolis e arredores centrais de São Paulo para avaliar o local e elaborar o orçamento detalhado.
-          </div>
-        </div>
-
-        <!-- FAQ Item 3 -->
-        <div class="border border-slate-200 rounded-2xl overflow-hidden">
-          <button onclick="toggleFaq(3)" class="w-full flex justify-between items-center p-5 text-left font-bold text-slate-900 hover:bg-brand-light transition-colors">
-            <span>Quais são as formas de pagamento aceitas?</span>
-            <i id="faq-icon-3" class="fa-solid fa-chevron-down text-brand-accent transition-transform"></i>
-          </button>
-          <div id="faq-ans-3" class="hidden p-5 pt-0 text-sm text-slate-600 border-t border-slate-100 bg-brand-light/50">
-            Oferecemos facilidade de pagamento com parcelamento via Pix, transferência bancária ou cartão de crédito, divididos por etapas concluídas da obra.
-          </div>
-        </div>
-
-      </div>
-
     </div>
   </section>
 
@@ -896,20 +857,6 @@
           cb.checked = true;
         }
       });
-    }
-
-    // --- FAQ Accordion ---
-    function toggleFaq(id) {
-      const ans = document.getElementById(`faq-ans-${id}`);
-      const icon = document.getElementById(`faq-icon-${id}`);
-
-      if (ans.classList.contains('hidden')) {
-        ans.classList.remove('hidden');
-        icon.classList.add('rotate-180');
-      } else {
-        ans.classList.add('hidden');
-        icon.classList.remove('rotate-180');
-      }
     }
 
     // --- WhatsApp Form Submit Handler ---
