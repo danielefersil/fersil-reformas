@@ -89,6 +89,10 @@
       justify-content: center;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
+      #gallery-slides .gallery-item[hidden] { display: none !important; }
+    #gallery-slides .gallery-item { width: 100%; }
+    #gallery-slides .gallery-item > div:first-child { height: clamp(300px, 60vh, 580px); background: #020617; }
+    #gallery-slides .gallery-item img { object-fit: contain; }
   </style>
 </head>
 <body class="font-sans bg-brand-light text-slate-800 antialiased selection:bg-brand-accent selection:text-brand-dark">
@@ -386,14 +390,20 @@
       <div class="space-y-8">
         <!-- Filter Tabs -->
         <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
-          <button onclick="filterGallery('todos')" class="filter-btn active bg-brand-accent text-brand-dark px-5 py-2 rounded-xl text-xs sm:text-sm font-bold shadow-md transition-all">Todos os Projetos</button>
-          <button onclick="filterGallery('banheiros')" class="filter-btn bg-slate-800 text-slate-300 hover:text-white px-5 py-2 rounded-xl text-xs sm:text-sm font-medium border border-slate-700 transition-all">Banheiros & Cozinhas</button>
-          <button onclick="filterGallery('pintura')" class="filter-btn bg-slate-800 text-slate-300 hover:text-white px-5 py-2 rounded-xl text-xs sm:text-sm font-medium border border-slate-700 transition-all">Pintura & Grafiato</button>
-          <button onclick="filterGallery('drywall')" class="filter-btn bg-slate-800 text-slate-300 hover:text-white px-5 py-2 rounded-xl text-xs sm:text-sm font-medium border border-slate-700 transition-all">Drywall & Teto</button>
+          <button onclick="filterGallery('todos', this)" aria-pressed="false" class="filter-btn active bg-brand-accent text-brand-dark px-5 py-2 rounded-xl text-xs sm:text-sm font-bold shadow-md transition-all">Todos os Projetos</button>
+          <button onclick="filterGallery('banheiros', this)" aria-pressed="false" class="filter-btn bg-slate-800 text-slate-300 hover:text-white px-5 py-2 rounded-xl text-xs sm:text-sm font-medium border border-slate-700 transition-all">Banheiros & Cozinhas</button>
+          <button onclick="filterGallery('pintura', this)" aria-pressed="false" class="filter-btn bg-slate-800 text-slate-300 hover:text-white px-5 py-2 rounded-xl text-xs sm:text-sm font-medium border border-slate-700 transition-all">Pintura & Grafiato</button>
+          <button onclick="filterGallery('drywall', this)" aria-pressed="false" class="filter-btn bg-slate-800 text-slate-300 hover:text-white px-5 py-2 rounded-xl text-xs sm:text-sm font-medium border border-slate-700 transition-all">Drywall & Teto</button>
         </div>
 
-        <!-- Gallery Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Gallery Carousel -->
+        <div id="portfolio-carousel" class="max-w-4xl mx-auto" role="region" aria-roledescription="carrossel" aria-label="Fotos dos projetos" tabindex="0">
+          <div class="flex items-center justify-between gap-4 mb-4">
+            <button id="gallery-prev" type="button" onclick="moveGallery(-1)" aria-label="Foto anterior" aria-controls="gallery-slides" class="w-12 h-12 rounded-full bg-brand-accent text-brand-dark hover:bg-brand-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-white disabled:opacity-40"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+            <p id="gallery-counter" class="text-sm text-slate-300 text-center" aria-live="polite" aria-atomic="true"></p>
+            <button id="gallery-next" type="button" onclick="moveGallery(1)" aria-label="Próxima foto" aria-controls="gallery-slides" class="w-12 h-12 rounded-full bg-brand-accent text-brand-dark hover:bg-brand-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-white disabled:opacity-40"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+          </div>
+          <div id="gallery-slides">
           
           <button type="button" class="gallery-item banheiros bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-brand-accent transition-all group cursor-pointer text-left w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-400" onclick="openLightbox('imagens/banheiros-cozinhas/banheiro-antes.jpeg', 'Banheiro — antes da reforma')">
             <div class="h-80 overflow-hidden relative bg-slate-950">
@@ -489,6 +499,7 @@
             </div>
           </div>
 
+          </div>
         </div>
       </div>
 
@@ -945,26 +956,46 @@
     });
 
     // --- Portfolio Gallery Filter ---
-    function filterGallery(category) {
-      const items = document.querySelectorAll('.gallery-item');
-      const buttons = document.querySelectorAll('.filter-btn');
-
-      buttons.forEach(btn => {
-        btn.classList.remove('bg-brand-accent', 'text-brand-dark', 'active');
-        btn.classList.add('bg-slate-800', 'text-slate-300');
-      });
-
-      event.target.classList.add('bg-brand-accent', 'text-brand-dark', 'active');
-      event.target.classList.remove('bg-slate-800', 'text-slate-300');
-
-      items.forEach(item => {
-        if (category === 'todos' || item.classList.contains(category)) {
-          item.style.display = 'block';
-        } else {
-          item.style.display = 'none';
-        }
-      });
+    let galleryIndex = 0;
+    let galleryCategory = 'todos';
+    const galleryItems = Array.from(document.querySelectorAll('#gallery-slides .gallery-item'));
+    function visibleGalleryItems() {
+      return galleryItems.filter(item => galleryCategory === 'todos' || item.classList.contains(galleryCategory));
     }
+    function renderGallery() {
+      const filtered = visibleGalleryItems();
+      galleryIndex = filtered.length ? (galleryIndex + filtered.length) % filtered.length : 0;
+      galleryItems.forEach(item => { item.hidden = true; });
+      if (filtered.length) filtered[galleryIndex].hidden = false;
+      document.getElementById('gallery-counter').textContent = filtered.length ? 'Foto ' + (galleryIndex + 1) + ' de ' + filtered.length : 'Nenhuma foto nesta categoria';
+      document.getElementById('gallery-prev').disabled = filtered.length < 2;
+      document.getElementById('gallery-next').disabled = filtered.length < 2;
+    }
+    function moveGallery(direction) {
+      galleryIndex += direction;
+      renderGallery();
+    }
+    function filterGallery(category, selectedButton) {
+      galleryCategory = category;
+      galleryIndex = 0;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        const selected = btn === selectedButton;
+        btn.classList.toggle('bg-brand-accent', selected);
+        btn.classList.toggle('text-brand-dark', selected);
+        btn.classList.toggle('active', selected);
+        btn.classList.toggle('bg-slate-800', !selected);
+        btn.classList.toggle('text-slate-300', !selected);
+        btn.setAttribute('aria-pressed', String(selected));
+      });
+      renderGallery();
+    }
+    document.getElementById('portfolio-carousel').addEventListener('keydown', event => {
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        event.preventDefault();
+        moveGallery(event.key === 'ArrowLeft' ? -1 : 1);
+      }
+    });
+    filterGallery('todos', document.querySelector('.filter-btn'));
 
     // --- Lightbox Functions ---
     function openLightbox(imgUrl, caption) {
